@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DummyCompiler", "DummyCompiler\DummyCompiler.csproj", "{9C01C9F5-B598-4767-ADD2-CAE4DC71C54D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DummyCompiler", "src\DummyCompiler\DummyCompiler.csproj", "{9C01C9F5-B598-4767-ADD2-CAE4DC71C54D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,0 +1,33 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+
+steps:
+- task: NuGetToolInstaller@1
+
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: 5.0.202
+    
+- script: dotnet restore
+
+- script: dotnet build -c $(buildConfiguration) -v minimal --no-restore
+
+- script: dotnet publish --configuration $(buildConfiguration) --runtime linux-x64 --output $(Build.ArtifactStagingDirectory) --verbosity n
+  condition: succeeded()
+  displayName: 'Publish Solution'
+
+- task: PublishBuildArtifacts@1
+  condition: succeeded()
+  displayName: 'Publish Build Artifact'
+  inputs:
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    artifactName: allan-mercou_dummy-compiler
